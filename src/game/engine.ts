@@ -68,13 +68,13 @@ export const CUSTOMERS: Customer[] = [
 type Rng = () => number;
 const randInt = (rng: Rng, lo: number, hi: number, step = 1) =>
   lo + step * Math.floor(rng() * (Math.floor((hi - lo) / step) + 1));
-const pick = <T,>(rng: Rng, arr: T[]) => arr[Math.floor(rng() * arr.length)];
+const pick = <T,>(rng: Rng, arr: T[]): T => arr[Math.floor(rng() * arr.length)]!;
 
-function pickProducts(rng: Rng, n: number) {
+function pickProducts(rng: Rng, n: number): [(typeof PRODUCTS)[number], ...(typeof PRODUCTS)[number][]] {
   const pool = [...PRODUCTS];
   const out: typeof PRODUCTS = [];
-  for (let i = 0; i < n; i++) out.push(pool.splice(Math.floor(rng() * pool.length), 1)[0]);
-  return out;
+  for (let i = 0; i < n; i++) out.push(pool.splice(Math.floor(rng() * pool.length), 1)[0]!);
+  return out as [(typeof PRODUCTS)[number], ...(typeof PRODUCTS)[number][]];
 }
 
 const item = (p: (typeof PRODUCTS)[number], unitPrice: number, qty = 1): LineItem => ({
@@ -94,7 +94,7 @@ export function choosePayment(rng: Rng, payable: number, allowExact: boolean): {
   }
   const options = PAY_NOTES.filter((n) => n > payable);
   if (options.length) {
-    const note = options.length > 1 && rng() < 0.25 ? options[1] : options[0];
+    const note = (options.length > 1 && rng() < 0.25 ? options[1] : options[0])!;
     return { paid: note, pieces: [`n${note}` as DenomId] };
   }
   // larger than 500: pay with multiple ₹500 notes
@@ -156,7 +156,7 @@ export function generateScenario(level: number, index: number, rng: Rng = Math.r
       const qty = randInt(rng, 1, 3);
       items = [item(p, randInt(rng, 20, 120, 10), qty)];
       const pct = pick(rng, [10, 20, 50]);
-      const sub = items[0].unitPrice * qty;
+      const sub = items[0]!.unitPrice * qty;
       discount = { label: { en: `${pct}% off`, hi: `${pct}% छूट` }, amount: (sub * pct) / 100 };
       break;
     }
@@ -182,7 +182,7 @@ export function generateScenario(level: number, index: number, rng: Rng = Math.r
   return {
     id: `L${level}-${index}-${Math.floor(rng() * 1e6)}`,
     level,
-    customer: CUSTOMERS[(index + level) % CUSTOMERS.length],
+    customer: CUSTOMERS[(index + level) % CUSTOMERS.length]!,
     items,
     subtotal,
     discount,

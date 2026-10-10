@@ -63,10 +63,10 @@ function App() {
   const start = (level: number) => setScreen({ name: "play", level, run: Date.now() });
 
   if (screen.name === "play")
-    return <GameScreen key={screen.run} level={LEVELS[screen.level]} onExit={() => setScreen({ name: "home" })} onComplete={(s) => complete(screen.level, s)} />;
+    return <GameScreen key={screen.run} level={LEVELS[screen.level]!} onExit={() => setScreen({ name: "home" })} onComplete={(s) => complete(screen.level, s)} />;
 
   if (screen.name === "done") {
-    const lv = LEVELS[screen.level];
+    const lv = LEVELS[screen.level]!;
     const hasNext = screen.level + 1 < LEVELS.length;
     return (
       <LevelComplete

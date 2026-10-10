@@ -17,6 +17,7 @@ export function HintPanel({ price, paid, steps, onShowPieces, onClose }: Props) 
   const { tr } = useSettings();
   const [cur, setCur] = useState(0);
   const points = [price, ...steps.map((s) => s.to)];
+  const step = steps[cur]!;
 
   return (
     <motion.div initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="rounded-3xl border-4 border-sky bg-paper p-4 shadow-soft">
@@ -37,11 +38,11 @@ export function HintPanel({ price, paid, steps, onShowPieces, onClose }: Props) 
 
       {steps.length > 0 && (
         <motion.div key={cur} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className="flex items-center gap-4 rounded-2xl bg-mint p-3">
-          <CurrencyPiece denom={denomById(steps[cur].denom)} />
+          <CurrencyPiece denom={denomById(step.denom)} />
           <div>
             <p className="text-sm font-extrabold tracking-widest text-leaf-dark">{tr("step")} {cur + 1} / {steps.length}</p>
             <p className="font-display text-2xl font-extrabold">
-              ₹{steps[cur].from} + ₹{denomById(steps[cur].denom).value} = ₹{steps[cur].to}
+              ₹{step.from} + ₹{denomById(step.denom).value} = ₹{step.to}
             </p>
           </div>
         </motion.div>

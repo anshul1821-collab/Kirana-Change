@@ -51,7 +51,7 @@ export function HomeScreen({ levels, progress, selected, onSelect, onPlay }: Pro
               {tr("play")} ▶
             </button>
             <p className="mt-3 font-bold text-wood">
-              {tr("level")} {levels[selected].number}: {levels[selected].title[lang]}
+              {tr("level")} {levels[selected]?.number}: {levels[selected]?.title[lang]}
             </p>
           </motion.div>
 

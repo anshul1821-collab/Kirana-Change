@@ -8,7 +8,7 @@ export type Mood = "speaking" | "thinking" | "happy";
 export function CustomerBubble({ scenario, mood }: { scenario: Scenario; mood: Mood }) {
   const { lang, tr } = useSettings();
   const names = scenario.items.map((i) => (i.qty > 1 ? `${i.qty} ${i.name[lang]}` : i.name[lang]));
-  const list = names.length > 1 ? `${names.slice(0, -1).join(", ")} ${tr("and")} ${names[names.length - 1]}` : names[0];
+  const list = names.length > 1 ? `${names.slice(0, -1).join(", ")} ${tr("and")} ${names[names.length - 1]}` : (names[0] ?? "");
   const exact = scenario.paid === scenario.payable;
   const text = `${scenario.customer.greeting[lang]} ${tr(exact ? "wantsExact" : "wants", { items: list, total: scenario.payable, paid: scenario.paid })}`;
 

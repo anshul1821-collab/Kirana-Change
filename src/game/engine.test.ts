@@ -12,7 +12,7 @@ describe("engine", () => {
   it("count-up steps always reach the paid amount", () => {
     for (let p = 1; p < 500; p += 7) {
       const s = countUpSteps(p, 500);
-      expect(s[s.length - 1].to).toBe(500);
+      expect(s[s.length - 1]!.to).toBe(500);
     }
   });
   it("tray total counts coins and notes", () => {
