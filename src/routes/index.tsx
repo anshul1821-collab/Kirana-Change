@@ -11,9 +11,16 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Kirana Change — Every Rupee Counts!" },
-      { name: "description", content: "A colourful kirana shop game where kids learn to add bills and give correct change in Indian rupees." },
+      {
+        name: "description",
+        content:
+          "A colourful kirana shop game where kids learn to add bills and give correct change in Indian rupees.",
+      },
       { property: "og:title", content: "Kirana Change — Every Rupee Counts!" },
-      { property: "og:description", content: "Run your own little shop and become a money master." },
+      {
+        property: "og:description",
+        content: "Run your own little shop and become a money master.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -25,7 +32,10 @@ export const Route = createFileRoute("/")({
   ),
 });
 
-type Screen = { name: "home" } | { name: "play"; level: number; run: number } | { name: "done"; level: number; stats: LevelStats };
+type Screen =
+  | { name: "home" }
+  | { name: "play"; level: number; run: number }
+  | { name: "done"; level: number; stats: LevelStats };
 
 function App() {
   const { lang } = useSettings();
@@ -63,7 +73,14 @@ function App() {
   const start = (level: number) => setScreen({ name: "play", level, run: Date.now() });
 
   if (screen.name === "play")
-    return <GameScreen key={screen.run} level={LEVELS[screen.level]!} onExit={() => setScreen({ name: "home" })} onComplete={(s) => complete(screen.level, s)} />;
+    return (
+      <GameScreen
+        key={screen.run}
+        level={LEVELS[screen.level]!}
+        onExit={() => setScreen({ name: "home" })}
+        onComplete={(s) => complete(screen.level, s)}
+      />
+    );
 
   if (screen.name === "done") {
     const lv = LEVELS[screen.level]!;
@@ -87,5 +104,13 @@ function App() {
     );
   }
 
-  return <HomeScreen levels={LEVELS} progress={progress} selected={selected} onSelect={setSelected} onPlay={() => start(selected)} />;
+  return (
+    <HomeScreen
+      levels={LEVELS}
+      progress={progress}
+      selected={selected}
+      onSelect={setSelected}
+      onPlay={() => start(selected)}
+    />
+  );
 }

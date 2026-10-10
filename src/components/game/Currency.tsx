@@ -33,12 +33,20 @@ export function CurrencyPiece({ denom, size = "md", className = "" }: Props) {
         <span
           className="absolute inset-0 rounded-full"
           style={{
-            background: "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--c) 40%, var(--paper)), var(--c) 60%, color-mix(in oklab, var(--c) 70%, var(--wood-dark)))",
-            boxShadow: "inset 0 -3px 0 color-mix(in oklab, var(--c) 60%, var(--wood-dark)), 0 3px 6px -2px color-mix(in oklab, var(--wood-dark) 50%, transparent)",
+            background:
+              "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--c) 40%, var(--paper)), var(--c) 60%, color-mix(in oklab, var(--c) 70%, var(--wood-dark)))",
+            boxShadow:
+              "inset 0 -3px 0 color-mix(in oklab, var(--c) 60%, var(--wood-dark)), 0 3px 6px -2px color-mix(in oklab, var(--wood-dark) 50%, transparent)",
           }}
         />
-        <span className="absolute inset-1.5 rounded-full border-2 border-dashed" style={{ borderColor: "color-mix(in oklab, var(--c) 50%, var(--wood-dark))" }} />
-        <span className="relative leading-none" style={{ textShadow: "0 1px 0 color-mix(in oklab, var(--paper) 70%, transparent)" }}>
+        <span
+          className="absolute inset-1.5 rounded-full border-2 border-dashed"
+          style={{ borderColor: "color-mix(in oklab, var(--c) 50%, var(--wood-dark))" }}
+        />
+        <span
+          className="relative leading-none"
+          style={{ textShadow: "0 1px 0 color-mix(in oklab, var(--paper) 70%, transparent)" }}
+        >
           ₹{denom.value}
         </span>
       </div>
@@ -55,7 +63,10 @@ export function CurrencyPiece({ denom, size = "md", className = "" }: Props) {
       }}
       className={`${dim} relative flex shrink-0 items-center justify-between rounded-lg px-2 font-display font-extrabold text-wood-dark ${className}`}
     >
-      <span className="absolute inset-1 rounded-md border-2" style={{ borderColor: "color-mix(in oklab, var(--c) 45%, var(--wood-dark))" }} />
+      <span
+        className="absolute inset-1 rounded-md border-2"
+        style={{ borderColor: "color-mix(in oklab, var(--c) 45%, var(--wood-dark))" }}
+      />
       <span
         className="relative grid h-[70%] aspect-square place-items-center rounded-full text-[0.6em]"
         style={{ background: "color-mix(in oklab, var(--paper) 55%, transparent)" }}

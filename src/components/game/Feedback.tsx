@@ -51,7 +51,11 @@ export function Feedback({ result, onContinue, onRetry }: Props) {
   const { tr } = useSettings();
   const correct = result.kind === "correct";
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-wood-dark/50 p-4" role="dialog" aria-modal="true">
+    <div
+      className="fixed inset-0 z-50 grid place-items-center bg-wood-dark/50 p-4"
+      role="dialog"
+      aria-modal="true"
+    >
       <motion.div
         initial={{ scale: 0.7, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -59,13 +63,21 @@ export function Feedback({ result, onContinue, onRetry }: Props) {
         className={`relative w-full max-w-md overflow-hidden rounded-3xl border-4 p-6 text-center shadow-soft ${correct ? "border-leaf bg-mint" : "border-orange bg-paper"}`}
       >
         {correct && <Confetti />}
-        <div className="text-6xl" aria-hidden>{correct ? "🥳" : result.kind === "timeout" ? "⏰" : "🤗"}</div>
+        <div className="text-6xl" aria-hidden>
+          {correct ? "🥳" : result.kind === "timeout" ? "⏰" : "🤗"}
+        </div>
         {correct ? (
           <>
             <h2 className="mt-2 font-display text-2xl font-extrabold">{tr("correct")}</h2>
             <p className="font-semibold text-muted-foreground">{tr("correctSub")}</p>
-            <div className="my-3"><Stars count={result.stars} /></div>
-            <button autoFocus onClick={onContinue} className="btn-press w-full rounded-2xl bg-leaf py-3 font-display text-xl font-extrabold text-primary-foreground shadow-chunky">
+            <div className="my-3">
+              <Stars count={result.stars} />
+            </div>
+            <button
+              autoFocus
+              onClick={onContinue}
+              className="btn-press w-full rounded-2xl bg-leaf py-3 font-display text-xl font-extrabold text-primary-foreground shadow-chunky"
+            >
               {tr("continue")}
             </button>
           </>
@@ -78,7 +90,11 @@ export function Feedback({ result, onContinue, onRetry }: Props) {
                   ? tr("tooMuch", { x: result.difference })
                   : tr("timeout")}
             </h2>
-            <button autoFocus onClick={onRetry} className="btn-press mt-4 w-full rounded-2xl bg-sun py-3 font-display text-xl font-extrabold text-wood-dark shadow-wood">
+            <button
+              autoFocus
+              onClick={onRetry}
+              className="btn-press mt-4 w-full rounded-2xl bg-sun py-3 font-display text-xl font-extrabold text-wood-dark shadow-wood"
+            >
               {tr("tryAgain")}
             </button>
           </>

@@ -99,14 +99,20 @@
 
   --gradient-wood: linear-gradient(180deg, var(--wood-light), var(--wood) 40%, var(--wood-dark));
   --gradient-sky: linear-gradient(180deg, oklch(0.9 0.06 220), var(--cream) 70%);
-  --shadow-chunky: 0 6px 0 0 var(--leaf-dark), 0 10px 20px -6px color-mix(in oklab, var(--wood-dark) 40%, transparent);
+  --shadow-chunky:
+    0 6px 0 0 var(--leaf-dark),
+    0 10px 20px -6px color-mix(in oklab, var(--wood-dark) 40%, transparent);
   --shadow-soft: 0 10px 30px -12px color-mix(in oklab, var(--wood-dark) 45%, transparent);
   --shadow-wood: 0 6px 0 0 var(--wood-dark);
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { font-size: 18px; }
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    font-size: 18px;
+  }
   body {
     background: var(--gradient-sky);
     background-attachment: fixed;
@@ -114,30 +120,60 @@
     font-family: var(--font-sans);
     min-height: 100vh;
   }
-  h1, h2, h3 { font-family: var(--font-display); }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
 }
 
-@utility font-display { font-family: var(--font-display); }
+@utility font-display {
+  font-family: var(--font-display);
+}
 @utility bg-wood-grain {
   background:
-    repeating-linear-gradient(92deg, transparent 0 22px, color-mix(in oklab, var(--wood-dark) 18%, transparent) 22px 24px),
+    repeating-linear-gradient(
+      92deg,
+      transparent 0 22px,
+      color-mix(in oklab, var(--wood-dark) 18%, transparent) 22px 24px
+    ),
     var(--gradient-wood);
 }
 @utility bg-awning {
   background: repeating-linear-gradient(90deg, var(--leaf) 0 40px, var(--paper) 40px 80px);
 }
-@utility shadow-chunky { box-shadow: var(--shadow-chunky); }
-@utility shadow-soft { box-shadow: var(--shadow-soft); }
-@utility shadow-wood { box-shadow: var(--shadow-wood); }
+@utility shadow-chunky {
+  box-shadow: var(--shadow-chunky);
+}
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+@utility shadow-wood {
+  box-shadow: var(--shadow-wood);
+}
 @utility paper-receipt {
   background: var(--paper);
-  background-image: repeating-linear-gradient(0deg, transparent 0 27px, color-mix(in oklab, var(--sky) 25%, transparent) 27px 28px);
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0 27px,
+    color-mix(in oklab, var(--sky) 25%, transparent) 27px 28px
+  );
 }
 @utility btn-press {
-  transition: transform 0.08s, box-shadow 0.08s;
-  &:active:not(:disabled) { transform: translateY(5px); box-shadow: 0 1px 0 0 var(--leaf-dark); }
+  transition:
+    transform 0.08s,
+    box-shadow 0.08s;
+  &:active:not(:disabled) {
+    transform: translateY(5px);
+    box-shadow: 0 1px 0 0 var(--leaf-dark);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

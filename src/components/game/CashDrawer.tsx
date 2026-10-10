@@ -34,14 +34,25 @@ export function CashDrawer({ denominations, onAdd, disabled }: Props) {
     </motion.button>
   );
   return (
-    <section aria-label={tr("drawer")} className="bg-wood-grain rounded-3xl border-4 border-wood-dark p-3 shadow-wood">
+    <section
+      aria-label={tr("drawer")}
+      className="bg-wood-grain rounded-3xl border-4 border-wood-dark p-3 shadow-wood"
+    >
       <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2 px-1">
         <h2 className="font-display text-xl font-extrabold text-sun">🗄️ {tr("drawer")}</h2>
         <p className="text-sm font-bold text-cream">{tr("drawerHint")}</p>
       </div>
       <div className="flex flex-col gap-2">
-        <div className="flex gap-2 overflow-x-auto pb-1">{notes.map((d) => <Slot key={d.id} d={d} />)}</div>
-        <div className="flex gap-2 overflow-x-auto pb-1">{coins.map((d) => <Slot key={d.id} d={d} />)}</div>
+        <div className="flex gap-2 overflow-x-auto pb-1">
+          {notes.map((d) => (
+            <Slot key={d.id} d={d} />
+          ))}
+        </div>
+        <div className="flex gap-2 overflow-x-auto pb-1">
+          {coins.map((d) => (
+            <Slot key={d.id} d={d} />
+          ))}
+        </div>
       </div>
     </section>
   );

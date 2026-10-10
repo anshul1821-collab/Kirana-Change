@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { countUpSteps, evaluate, generateScenario, trayTotal, isUnlocked, emptyProgress } from "./engine";
+import {
+  countUpSteps,
+  evaluate,
+  generateScenario,
+  trayTotal,
+  isUnlocked,
+  emptyProgress,
+} from "./engine";
 import type { Scenario } from "./types";
 
 const base = (payable: number, paid: number) =>

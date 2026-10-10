@@ -44,11 +44,23 @@ const STRINGS = {
   prev: { en: "Previous", hi: "पिछला" },
   showPieces: { en: "Show me the pieces", hi: "पैसे रख दो" },
   close: { en: "Got it!", hi: "समझ गया!" },
-  correct: { en: "Perfect! You're a smart shopkeeper!", hi: "बहुत बढ़िया! तुम समझदार दुकानदार हो!" },
+  correct: {
+    en: "Perfect! You're a smart shopkeeper!",
+    hi: "बहुत बढ़िया! तुम समझदार दुकानदार हो!",
+  },
   correctSub: { en: "The customer is happy!", hi: "ग्राहक खुश है!" },
-  tooLittle: { en: "Almost there! The customer needs ₹{x} more.", hi: "बस थोड़ा और! ग्राहक को ₹{x} और चाहिए।" },
-  tooMuch: { en: "Oops! That's ₹{x} too much. Let's make it fair.", hi: "अरे! ये ₹{x} ज़्यादा है। चलो ठीक करें।" },
-  timeout: { en: "Time's up! Let's try this customer again.", hi: "समय खत्म! चलो फिर से कोशिश करें।" },
+  tooLittle: {
+    en: "Almost there! The customer needs ₹{x} more.",
+    hi: "बस थोड़ा और! ग्राहक को ₹{x} और चाहिए।",
+  },
+  tooMuch: {
+    en: "Oops! That's ₹{x} too much. Let's make it fair.",
+    hi: "अरे! ये ₹{x} ज़्यादा है। चलो ठीक करें।",
+  },
+  timeout: {
+    en: "Time's up! Let's try this customer again.",
+    hi: "समय खत्म! चलो फिर से कोशिश करें।",
+  },
   tryAgain: { en: "Try again", hi: "फिर से" },
   continue: { en: "Continue", hi: "आगे बढ़ो" },
   done1: { en: "Wonderful work!", hi: "शानदार काम!" },
@@ -63,8 +75,14 @@ const STRINGS = {
   sound: { en: "Sound", hi: "आवाज़" },
   speak: { en: "Read aloud", hi: "पढ़कर सुनाओ" },
   timeLeft: { en: "seconds left", hi: "सेकंड बाकी" },
-  wants: { en: "I'd like {items}. That's ₹{total}. Here's ₹{paid}!", hi: "मुझे {items} चाहिए। ₹{total} हुए। ये लो ₹{paid}!" },
-  wantsExact: { en: "I'd like {items}. Here's exactly ₹{paid}!", hi: "मुझे {items} चाहिए। ये लो पूरे ₹{paid}!" },
+  wants: {
+    en: "I'd like {items}. That's ₹{total}. Here's ₹{paid}!",
+    hi: "मुझे {items} चाहिए। ₹{total} हुए। ये लो ₹{paid}!",
+  },
+  wantsExact: {
+    en: "I'd like {items}. Here's exactly ₹{paid}!",
+    hi: "मुझे {items} चाहिए। ये लो पूरे ₹{paid}!",
+  },
   and: { en: "and", hi: "और" },
 } as const;
 

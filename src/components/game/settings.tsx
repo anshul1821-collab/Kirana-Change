@@ -40,7 +40,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     try {
       audio.current ??= new AudioContext();
       const ac = audio.current;
-      const notes = kind === "tap" ? [660] : kind === "success" ? [523, 659, 784, 1046] : [392, 330];
+      const notes =
+        kind === "tap" ? [660] : kind === "success" ? [523, 659, 784, 1046] : [392, 330];
       notes.forEach((f, i) => {
         const o = ac.createOscillator();
         const g = ac.createGain();
@@ -76,7 +77,11 @@ export function SettingsBar() {
   const { lang, setLang, sound, setSound, tr } = useSettings();
   return (
     <div className="flex items-center gap-2">
-      <div role="group" aria-label="Language" className="flex rounded-full bg-paper p-1 shadow-soft border-2 border-wood-light">
+      <div
+        role="group"
+        aria-label="Language"
+        className="flex rounded-full bg-paper p-1 shadow-soft border-2 border-wood-light"
+      >
         {(["en", "hi"] as Lang[]).map((l) => (
           <button
             key={l}
