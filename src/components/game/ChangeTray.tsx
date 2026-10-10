@@ -89,19 +89,13 @@ export function ChangeTray({ tray, denominations, onDrop, onRemove, onClear, dis
   );
 }
 
-const STATE_STYLE: Record<TotalState, string> = {
-  empty: "bg-paper border-wood-light",
-  below: "bg-paper border-sky",
-  exact: "bg-mint border-leaf",
-  above: "bg-peach border-orange",
-};
-
 export function RunningTotal({ total, state }: { total: number; state: TotalState }) {
   const { tr } = useSettings();
-  // Message nudges without revealing the expected answer.
-  const msg = state === "empty" ? tr("st_empty") : state === "below" ? tr("st_below") : state === "above" ? tr("st_check") : tr("st_ready");
+  // Deliberately neutral: never reveals whether the amount is right before submission.
+  const empty = state === "empty";
+  const msg = empty ? tr("st_empty") : total < 10 ? tr("st_below") : tr("st_ready");
   return (
-    <div className={`rounded-3xl border-4 p-3 text-center shadow-soft transition-colors ${STATE_STYLE[state === "exact" ? "below" : state]}`} aria-live="polite">
+    <div className={`rounded-3xl border-4 p-3 text-center shadow-soft transition-colors ${empty ? "bg-paper border-wood-light" : "bg-paper border-sky"}`} aria-live="polite">
       <p className="text-sm font-extrabold tracking-widest text-muted-foreground">{tr("giving")}</p>
       <motion.p key={total} initial={{ scale: 1.25 }} animate={{ scale: 1 }} className="font-display text-5xl font-extrabold text-wood-dark">
         ₹{total}
