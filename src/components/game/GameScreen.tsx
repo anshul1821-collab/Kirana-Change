@@ -144,7 +144,7 @@ export function GameScreen({ level, onExit, onComplete }: Props) {
               <RunningTotal total={total} state={trayState(tray, required)} />
               <button
                 onClick={submit}
-                disabled={busy || (total === 0 && required !== 0 ? false : false)}
+                disabled={busy}
                 className="btn-press rounded-2xl bg-leaf py-4 font-display text-2xl font-extrabold text-primary-foreground shadow-chunky disabled:opacity-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sun"
               >
                 {total === 0 ? tr("noChange") : tr("give")}
