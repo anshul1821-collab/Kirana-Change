@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Game rules live only in src/game/engine.ts (pure, tested); UI components in src/components/game receive data via props/callbacks — keeps the engine swappable.
