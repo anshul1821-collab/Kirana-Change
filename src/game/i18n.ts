@@ -76,8 +76,8 @@ const STRINGS = {
   speak: { en: "Read aloud", hi: "पढ़कर सुनाओ" },
   timeLeft: { en: "seconds left", hi: "सेकंड बाकी" },
   wants: {
-    en: "I'd like {items}. That's ₹{total}. Here's ₹{paid}!",
-    hi: "मुझे {items} चाहिए। ₹{total} हुए। ये लो ₹{paid}!",
+    en: "I'd like {items}. Here's ₹{paid}!",
+    hi: "मुझे {items} चाहिए। ये लो ₹{paid}!",
   },
   wantsExact: {
     en: "I'd like {items}. Here's exactly ₹{paid}!",

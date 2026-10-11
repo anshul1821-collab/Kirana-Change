@@ -18,6 +18,7 @@ import { Feedback } from "./Feedback";
 import { HintPanel } from "./HintPanel";
 import { ShoppingBill } from "./ShoppingBill";
 import { SettingsBar, useSettings } from "./settings";
+import { KiranaStore3D } from "./3d/KiranaStore3D";
 
 export interface LevelStats {
   stars: number[];
@@ -149,48 +150,63 @@ export function GameScreen({ level, onExit, onComplete }: Props) {
             ⏱️ {timeLeft} {tr("timeLeft")}
           </div>
         )}
-        {/* Customer + bill */}
-        <section className="grid items-start gap-4 md:grid-cols-[1.5fr_1fr]">
-          <CustomerBubble
+        {/* 3D Indian Kirana Shop Environment Stage */}
+        <section className="w-full">
+          <KiranaStore3D
             scenario={scenario}
+            tray={tray}
             mood={result?.kind === "correct" ? "happy" : result ? "thinking" : "speaking"}
-          />
-          <ShoppingBill
-            scenario={scenario}
-            calculatedTotal={calculatedTotal}
-            onChangeTotal={setCalculatedTotal}
-            disabled={busy}
+            isCorrect={result?.kind === "correct"}
+            result={result}
+            roundIndex={index}
           />
         </section>
 
-        {/* Counter */}
-        <section className="rounded-[2rem] border-4 border-wood-dark bg-wood-light/40 p-3 shadow-wood sm:p-4">
-          <div className="grid gap-3 md:grid-cols-[1fr_auto]">
-            <ChangeTray
-              tray={tray}
-              denominations={DENOMINATIONS}
-              onDrop={add}
-              onRemove={remove}
-              onClear={() => setTray({})}
+        {/* Countertop Operations: Customer Bill on Left, Change Tray & Actions on Right */}
+        <section className="grid items-start gap-4 lg:grid-cols-[1.1fr_1.3fr]">
+          <div className="flex flex-col gap-3">
+            <CustomerBubble
+              scenario={scenario}
+              mood={result?.kind === "correct" ? "happy" : result ? "thinking" : "speaking"}
+            />
+            <ShoppingBill
+              scenario={scenario}
+              calculatedTotal={calculatedTotal}
+              onChangeTotal={setCalculatedTotal}
               disabled={busy}
             />
-            <div className="flex flex-col gap-3 md:w-64">
-              <RunningTotal total={total} state={trayState(tray, required)} />
-              <button
-                onClick={submit}
-                disabled={busy || calculatedTotal !== scenario.payable}
-                className="btn-press rounded-2xl bg-leaf py-4 font-display text-2xl font-extrabold text-primary-foreground shadow-chunky disabled:opacity-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sun"
-              >
-                {total === 0 ? tr("noChange") : tr("give")}
-              </button>
-              <button
-                onClick={openHint}
-                disabled={busy}
-                className="rounded-2xl border-2 border-sky bg-paper py-2 font-extrabold text-teal hover:bg-mint"
-              >
-                💡 {tr("hint")}
-              </button>
-            </div>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <section className="rounded-[2rem] border-4 border-wood-dark bg-wood-light/40 p-3 shadow-wood sm:p-4">
+              <div className="flex flex-col gap-3">
+                <ChangeTray
+                  tray={tray}
+                  denominations={DENOMINATIONS}
+                  onDrop={add}
+                  onRemove={remove}
+                  onClear={() => setTray({})}
+                  disabled={busy}
+                />
+                <RunningTotal total={total} state={trayState(tray, required)} />
+                <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 items-center">
+                  <button
+                    onClick={submit}
+                    disabled={busy || calculatedTotal !== scenario.payable}
+                    className="btn-press rounded-2xl bg-leaf py-3.5 px-4 font-display text-2xl font-extrabold text-primary-foreground shadow-chunky disabled:opacity-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sun text-center"
+                  >
+                    {total === 0 ? tr("noChange") : tr("give")}
+                  </button>
+                  <button
+                    onClick={openHint}
+                    disabled={busy}
+                    className="rounded-2xl border-2 border-sky bg-paper py-3 px-4 font-extrabold text-teal hover:bg-mint"
+                  >
+                    💡 {tr("hint")}
+                  </button>
+                </div>
+              </div>
+            </section>
           </div>
         </section>
 

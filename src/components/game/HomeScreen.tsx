@@ -89,6 +89,10 @@ export function HomeScreen({ levels, progress, selected, onSelect, onPlay }: Pro
                 height={1024}
                 className="w-full rounded-[2rem] border-8 border-wood shadow-soft"
               />
+              <div className="absolute -bottom-3 right-4 z-10 flex items-center gap-1.5 rounded-full border-2 border-sun bg-wood-dark px-4 py-1.5 font-display text-sm font-extrabold text-sun shadow-soft">
+                <span>🏬</span>
+                <span>{lang === "hi" ? "3D किराना दुकान अनुभव!" : "3D Interactive Shop!"}</span>
+              </div>
             </div>
           </motion.div>
         </section>
